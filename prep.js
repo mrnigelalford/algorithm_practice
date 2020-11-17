@@ -168,7 +168,7 @@ var Prep;
             };
         }, { running_total: 0, max: 0 }).max;
     };
-    Prep.get_points = getPoints;
+    Prep.compareTriplets = ct;
 })(Prep = exports.Prep || (exports.Prep = {}));
 /// compare the triplets
 // The task is to find their comparison points by comparing a[0] with b[0], a[1] with b[1], and a[2] with b[2].
@@ -176,15 +176,14 @@ var Prep;
 // If a[i] < b[i], then Bob is awarded 1 point.
 // If a[i] = b[i], then neither person receives a point.
 // RETURN int[2]: Alice's score is in the first position, and Bob's score is in the second.
-function getPoints(a, b) {
-    var Alice = 0;
-    var Bob = 0;
+function ct(a, b) {
+    var arr = [0, 0];
     for (var i = 0; i < a.length; i++) {
         if (a[i] > b[i])
-            Alice++;
+            arr[0]++;
         if (a[i] < b[i])
-            Bob++;
+            arr[1]++;
     }
-    return [Alice, Bob];
+    return arr;
 }
 //# sourceMappingURL=prep.js.map

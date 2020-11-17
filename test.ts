@@ -76,13 +76,13 @@ describe('triplet comparison', () => {
 	it('should return an array length of 2', () => {
 		const A = [17,28,30];
 		const B = [99,16,8];
-		assert.equal(2, Prep.get_points(A, B).length)
+		assert.equal(2, Prep.compareTriplets(A, B).length)
 	})
 
 	it('should yield a tie', () => {
 		const A = [17,28,30];
 		const B = [99, 16, 8];
-		expect([2,1]).to.eql(Prep.get_points(A, B));
-		expect([1,0]).to.not.eql(Prep.get_points(A, B));
+		expect([2,1]).to.eql(Prep.compareTriplets(A, B));
+		expect([1,0]).to.not.eql(Prep.compareTriplets(A, B));
 	})
 })

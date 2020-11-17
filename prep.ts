@@ -199,7 +199,7 @@ export module Prep {
 		).max;
 	};
 
-	export const get_points = getPoints;
+	export const compareTriplets = ct;
 }
 
 /// compare the triplets
@@ -212,14 +212,13 @@ export module Prep {
 
 // RETURN int[2]: Alice's score is in the first position, and Bob's score is in the second.
 
-function getPoints(a, b) {
-    let Alice = 0;
-    let Bob = 0;
+function ct(a, b) {
+    const arr = [0,0];
   
     for (let i = 0; i < a.length; i++) {
-      if (a[i] > b[i]) Alice++;
-      if (a[i] < b[i]) Bob++;
+      if (a[i] > b[i]) arr[0]++;
+      if (a[i] < b[i]) arr[1]++;
     }
   
-    return [Alice, Bob];
+    return arr;
 }

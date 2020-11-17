@@ -69,13 +69,13 @@ describe('triplet comparison', function () {
     it('should return an array length of 2', function () {
         var A = [17, 28, 30];
         var B = [99, 16, 8];
-        assert.equal(2, prep_1.Prep.get_points(A, B).length);
+        assert.equal(2, prep_1.Prep.compareTriplets(A, B).length);
     });
     it('should yield a tie', function () {
         var A = [17, 28, 30];
         var B = [99, 16, 8];
-        chai_1.expect([2, 1]).to.eql(prep_1.Prep.get_points(A, B));
-        chai_1.expect([1, 0]).to.not.eql(prep_1.Prep.get_points(A, B));
+        chai_1.expect([2, 1]).to.eql(prep_1.Prep.compareTriplets(A, B));
+        chai_1.expect([1, 0]).to.not.eql(prep_1.Prep.compareTriplets(A, B));
     });
 });
 //# sourceMappingURL=test.js.map
