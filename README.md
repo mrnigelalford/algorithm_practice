@@ -6,10 +6,10 @@ Mocha and Chai are being used a test framework.
 
 
 ## Tech Stack
-* Typescript
-* Node.js
-* Mocha
-* Nodemon
+* Typescript (Version 4.0.3)
+* Node.js (v10.16.0)
+* Mocha (v8.2.1)
+* Nodemon (v2.0.6)
 
 ## Running locally
 
