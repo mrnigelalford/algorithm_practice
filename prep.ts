@@ -174,6 +174,59 @@ function linearSearch(data, query) {
 // for every child array update the test array
 // return maximum value in array
 
+/// compare the triplets
+
+// The task is to find their comparison points by comparing a[0] with b[0], a[1] with b[1], and a[2] with b[2].
+
+// If a[i] > b[i], then Alice is awarded 1 point.
+// If a[i] < b[i], then Bob is awarded 1 point.
+// If a[i] = b[i], then neither person receives a point.
+
+// RETURN int[2]: Alice's score is in the first position, and Bob's score is in the second.
+
+function ct(a, b) {
+    const arr = [0,0];
+  
+    for (let i = 0; i < a.length; i++) {
+      if (a[i] > b[i]) arr[0]++;
+      if (a[i] < b[i]) arr[1]++;
+    }
+  
+    return arr;
+}
+
+function dayZero(input: string) {
+  let numbers = input.split('\n')[0].split(' ').map(i => Number(i));
+  const asc = numbers.sort((a,b) => a - b);
+  const mean = asc.reduce((a,b) => a+b,0)/asc.length
+
+  let median = 0;
+  const mid = Math.floor(asc.length/2);
+
+  let mode = null;
+  let countMap = new Map();
+  let maxFreq = 0;
+  for(const item of asc){
+      let freq = countMap.has(item) ? countMap.get(item) : 0;
+      freq++;
+      countMap.set(item, freq);
+      if (freq > maxFreq){
+          maxFreq = freq;
+          mode = item;
+      }
+  }
+
+  median = asc.length%2 === 0 ? (asc[mid] + asc[mid-1])/2 : asc[mid]
+
+  const scale = (num) => Math.round(num*10) / 10
+  console.log(scale(mean));
+  console.log(scale(median));
+  console.log(scale(mode));
+
+  return [mean, median, mode]
+}
+
+
 export module Prep {
 	// return the maximum number of items after manipulating an array based on 2d array
 	export const arrayManip = (n: number, queries: number[][]): number => {
@@ -199,26 +252,7 @@ export module Prep {
 		).max;
 	};
 
-	export const compareTriplets = ct;
-}
-
-/// compare the triplets
-
-// The task is to find their comparison points by comparing a[0] with b[0], a[1] with b[1], and a[2] with b[2].
-
-// If a[i] > b[i], then Alice is awarded 1 point.
-// If a[i] < b[i], then Bob is awarded 1 point.
-// If a[i] = b[i], then neither person receives a point.
-
-// RETURN int[2]: Alice's score is in the first position, and Bob's score is in the second.
-
-function ct(a, b) {
-    const arr = [0,0];
+  export const compareTriplets = ct;
   
-    for (let i = 0; i < a.length; i++) {
-      if (a[i] > b[i]) arr[0]++;
-      if (a[i] < b[i]) arr[1]++;
-    }
-  
-    return arr;
+  export const statDay0 = dayZero;
 }
