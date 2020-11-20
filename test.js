@@ -1,27 +1,27 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const assert = require('assert');
-const prep_1 = require("./prep");
-const chai_1 = require("chai");
-describe('arrayManip', () => {
-    it('should return 200', () => {
-        const v1 = [
+exports.__esModule = true;
+var assert = require('assert');
+var prep_1 = require("./prep");
+var chai_1 = require("chai");
+describe('arrayManip', function () {
+    it('should return 200', function () {
+        var v1 = [
             [1, 2, 100],
             [2, 5, 100],
             [3, 4, 100],
         ];
         assert.equal(200, prep_1.Prep.arrayManip(5, v1));
     });
-    it('should return 10', () => {
-        const v2 = [
+    it('should return 10', function () {
+        var v2 = [
             [1, 5, 3],
             [4, 8, 7],
             [6, 9, 1],
         ];
         assert.equal(10, prep_1.Prep.arrayManip(10, v2));
     });
-    it('should return 31', () => {
-        const v3 = [
+    it('should return 31', function () {
+        var v3 = [
             [2, 6, 8],
             [3, 5, 7],
             [1, 8, 1],
@@ -29,8 +29,8 @@ describe('arrayManip', () => {
         ];
         assert.equal(31, prep_1.Prep.arrayManip(10, v3));
     });
-    it('should return 6314', () => {
-        const arr = [
+    it('should return 6314', function () {
+        var arr = [
             [19, 28, 419],
             [4, 23, 680],
             [5, 6, 907],
@@ -65,23 +65,31 @@ describe('arrayManip', () => {
         assert.equal(6314, prep_1.Prep.arrayManip(40, arr));
     });
 });
-describe('triplet comparison', () => {
-    it('should return an array length of 2', () => {
-        const A = [17, 28, 30];
-        const B = [99, 16, 8];
+describe('triplet comparison', function () {
+    it('should return an array length of 2', function () {
+        var A = [17, 28, 30];
+        var B = [99, 16, 8];
         assert.equal(2, prep_1.Prep.compareTriplets(A, B).length);
     });
-    it('should yield a tie', () => {
-        const A = [17, 28, 30];
-        const B = [99, 16, 8];
+    it('should yield a tie', function () {
+        var A = [17, 28, 30];
+        var B = [99, 16, 8];
         chai_1.expect([2, 1]).to.eql(prep_1.Prep.compareTriplets(A, B));
         chai_1.expect([1, 0]).to.not.eql(prep_1.Prep.compareTriplets(A, B));
     });
 });
-describe('stats - mean, median, mode', () => {
-    const a = '64630 11735 14216 99233 14470 4978 73429 38120 51135 67060';
-    it('should return a number', () => {
+describe('stats - mean, median, mode', function () {
+    var a = '64630 11735 14216 99233 14470 4978 73429 38120 51135 67060';
+    it('should return a 3 long array', function () {
         chai_1.expect(prep_1.Prep.statDay0(a).length).to.eql(3);
     });
+    it('should return a mean of 43900.6', function () {
+        chai_1.expect(prep_1.Prep.statDay0(a)[0]).to.eql(43900.6);
+    });
+    it('should return a median of 44627.5', function () {
+        chai_1.expect(prep_1.Prep.statDay0(a)[1]).to.eql(44627.5);
+    });
+    it('should return a mode of 4978', function () {
+        chai_1.expect(prep_1.Prep.statDay0(a)[2]).to.eql(4978);
+    });
 });
-//# sourceMappingURL=test.js.map

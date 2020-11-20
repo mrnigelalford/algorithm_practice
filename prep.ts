@@ -218,7 +218,8 @@ function dayZero(input: string) {
 
   median = asc.length%2 === 0 ? (asc[mid] + asc[mid-1])/2 : asc[mid]
 
-  const scale = (num) => Math.round(num*10) / 10
+  const scale = (num) => Math.round(num*10) / 10;
+
   console.log(scale(mean));
   console.log(scale(median));
   console.log(scale(mode));
@@ -255,4 +256,5 @@ export module Prep {
   export const compareTriplets = ct;
   
   export const statDay0 = dayZero;
+
 }

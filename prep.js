@@ -1,37 +1,47 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+exports.__esModule = true;
 exports.Prep = void 0;
 // TODO: return the lowest index at which a value should be inserted into an array once it has been sorted. The returned value should be a number
 // first pass
-const getIndexToInsert = (Arr, Num) => {
+var getIndexToInsert = function (Arr, Num) {
     Arr.push(Num);
-    Arr.sort((a, b) => a - b);
+    Arr.sort(function (a, b) { return a - b; });
     return Arr.indexOf(Num);
 };
-let testArray = [20, 3, 5, 30, 10, 2];
+var testArray = [20, 3, 5, 30, 10, 2];
 /*
  * console.log('starting array: ', testArray);
  * console.log('index is: ', getIndexToInsert(testArray, 4));
  * console.log('final array: ', testArray);
  */
 // second pass
-const getIndex = (Arr, Num) => [...Arr, Num].sort((a, b) => a - b).indexOf(Num);
+var getIndex = function (Arr, Num) {
+    return __spreadArrays(Arr, [Num]).sort(function (a, b) { return a - b; }).indexOf(Num);
+};
 //////////////////////////////////////////////////////////////////////////////////////////
 // You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
-const initalArray = [0, 10, 20, 50, 80, 6, 13, 7];
+var initalArray = [0, 10, 20, 50, 80, 6, 13, 7];
 function destroyerFn(arr) {
     // @ts-ignore
-    const Obj = Object.values(arguments).slice(1);
-    return arr.filter((item) => !Obj.find((x) => x === item));
+    var Obj = Object.values(arguments).slice(1);
+    return arr.filter(function (item) { return !Obj.find(function (x) { return x === item; }); });
 }
 // @ts-ignore
 // console.log('destoy: ', destroyerFn(initalArray, 20));
 function destroyerV2(arr) {
-    return arr.filter((item) => 
-    // @ts-ignore
-    !Object.values(arguments)
-        .slice(1)
-        .find((x) => x === item));
+    return arr.filter(function (item) {
+        // @ts-ignore
+        return !Object.values(arguments)
+            .slice(1)
+            .find(function (x) { return x === item; });
+    });
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 // TODO: When Olivia blows out the candles, she’ll only be able to blow out the tallest ones.
@@ -46,9 +56,9 @@ function getTallest(candles, age) {
         return false;
     return candles
         .sort()
-        .filter((candle) => candle >= candles[candles.length - 1]).length;
+        .filter(function (candle) { return candle >= candles[candles.length - 1]; }).length;
 }
-const candles_olivia = [3, 3, 1, 2];
+var candles_olivia = [3, 3, 1, 2];
 // console.log('olivia can blow out: ', getTallest(candles_olivia, 4));
 // Result: returned wrong data. Why? Missed last part of question
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -64,13 +74,13 @@ const candles_olivia = [3, 3, 1, 2];
 // iterate over array, if array is divisible y k, push that number into new array
 // return length of new array
 function beautifulDays(start, end, possibles) {
-    var reverse = (num) => {
+    var reverse = function (num) {
         var reversedNum = parseInt(num.toString().split('').reverse().join(''));
         return Math.abs(num - reversedNum);
     };
-    let perfDays = 0;
-    for (let day = start; day <= end; day++) {
-        const revD = reverse(day);
+    var perfDays = 0;
+    for (var day = start; day <= end; day++) {
+        var revD = reverse(day);
         if (revD % possibles === 0) {
             perfDays++;
         }
@@ -80,16 +90,16 @@ function beautifulDays(start, end, possibles) {
 // console.log('bd: ', beautifulDays(20, 23, 6));
 //////////////////////////////////////////////////////////////////////////////////////////
 function countBrackets(brackets) {
-    const open = [];
-    let clear = false;
-    let counter = 0;
+    var open = [];
+    var clear = false;
+    var counter = 0;
     for (var i = 0; i < brackets.length; i++) {
-        const pos = brackets[i];
+        var pos = brackets[i];
         if (pos === '(' || pos === '{' || pos === '[') {
             counter += 1;
             open.push(pos);
         }
-        const last = open[open.length - 1];
+        var last = open[open.length - 1];
         switch (pos) {
             case ')':
                 last === '(' ? (counter -= 1) : (counter += 1);
@@ -128,8 +138,8 @@ function countBrackets(brackets) {
 //Example:
 // CreatePhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
 function linearSearch(data, query) {
-    let result = -1;
-    data.forEach((num, position) => {
+    var result = -1;
+    data.forEach(function (num, position) {
         if (num === query) {
             result = data[position];
         }
@@ -147,8 +157,8 @@ function linearSearch(data, query) {
 // If a[i] = b[i], then neither person receives a point.
 // RETURN int[2]: Alice's score is in the first position, and Bob's score is in the second.
 function ct(a, b) {
-    const arr = [0, 0];
-    for (let i = 0; i < a.length; i++) {
+    var arr = [0, 0];
+    for (var i = 0; i < a.length; i++) {
         if (a[i] > b[i])
             arr[0]++;
         if (a[i] < b[i])
@@ -157,16 +167,17 @@ function ct(a, b) {
     return arr;
 }
 function dayZero(input) {
-    let numbers = input.split('\n')[0].split(' ').map(i => Number(i));
-    const asc = numbers.sort((a, b) => a - b);
-    const mean = asc.reduce((a, b) => a + b, 0) / asc.length;
-    let median = 0;
-    const mid = Math.floor(asc.length / 2);
-    let mode = null;
-    let countMap = new Map();
-    let maxFreq = 0;
-    for (const item of asc) {
-        let freq = countMap.has(item) ? countMap.get(item) : 0;
+    var numbers = input.split('\n')[0].split(' ').map(function (i) { return Number(i); });
+    var asc = numbers.sort(function (a, b) { return a - b; });
+    var mean = asc.reduce(function (a, b) { return a + b; }, 0) / asc.length;
+    var median = 0;
+    var mid = Math.floor(asc.length / 2);
+    var mode = null;
+    var countMap = new Map();
+    var maxFreq = 0;
+    for (var _i = 0, asc_1 = asc; _i < asc_1.length; _i++) {
+        var item = asc_1[_i];
+        var freq = countMap.has(item) ? countMap.get(item) : 0;
         freq++;
         countMap.set(item, freq);
         if (freq > maxFreq) {
@@ -175,7 +186,7 @@ function dayZero(input) {
         }
     }
     median = asc.length % 2 === 0 ? (asc[mid] + asc[mid - 1]) / 2 : asc[mid];
-    const scale = (num) => Math.round(num * 10) / 10;
+    var scale = function (num) { return Math.round(num * 10) / 10; };
     console.log(scale(mean));
     console.log(scale(median));
     console.log(scale(mode));
@@ -184,22 +195,21 @@ function dayZero(input) {
 var Prep;
 (function (Prep) {
     // return the maximum number of items after manipulating an array based on 2d array
-    Prep.arrayManip = (n, queries) => {
+    Prep.arrayManip = function (n, queries) {
         //@ts-ignore
-        let diffs = new Array(n + 1).fill(0);
-        queries.forEach((query) => {
-            const [range_start, range_end, addend] = query;
+        var diffs = new Array(n + 1).fill(0);
+        queries.forEach(function (query) {
+            var range_start = query[0], range_end = query[1], addend = query[2];
             diffs[range_start - 1] += addend;
             diffs[range_end] -= addend;
         });
-        return diffs.reduce((acc, cur) => {
+        return diffs.reduce(function (acc, cur) {
             return {
                 running_total: acc.running_total + cur,
-                max: Math.max(acc.max, acc.running_total + cur),
+                max: Math.max(acc.max, acc.running_total + cur)
             };
         }, { running_total: 0, max: 0 }).max;
     };
     Prep.compareTriplets = ct;
     Prep.statDay0 = dayZero;
 })(Prep = exports.Prep || (exports.Prep = {}));
-//# sourceMappingURL=prep.js.map

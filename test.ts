@@ -89,7 +89,19 @@ describe('triplet comparison', () => {
 describe('stats - mean, median, mode', () => {
 	const a = '64630 11735 14216 99233 14470 4978 73429 38120 51135 67060';
 
-	it('should return a number', () => {
+	it('should return a 3 length array', () => {
 		expect(Prep.statDay0(a).length).to.eql(3);
+	});
+
+	it('should return a mean of 43900.6', () => {
+		expect(Prep.statDay0(a)[0]).to.eql(43900.6);
+	});
+
+	it('should return a median of 44627.5', () => {
+		expect(Prep.statDay0(a)[1]).to.eql(44627.5);
+	});
+
+	it('should return a mode of 4978', () => {
+		expect(Prep.statDay0(a)[2]).to.eql(4978);
 	});
 });
