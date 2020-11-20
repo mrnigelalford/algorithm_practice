@@ -20,3 +20,8 @@ nodemon ./node_modules/mocha/bin/mocha
 ```
 
 This file will be updated over time pointing to the individual challenges and any helpful links.
+
+## Challenges
+
+### Statistics
+[Mean Median and Mode](https://www.hackerrank.com/challenges/s10-basic-statistics/problem) - Fun challenge. Required. String, number, and array manipulation. Object For of looping and some simple math. Good warm-up. Took me 1.5 hour :shock:
